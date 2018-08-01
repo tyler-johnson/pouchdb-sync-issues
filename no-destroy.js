@@ -1,13 +1,16 @@
 const PouchDB = require("pouchdb-core");
+const debugPlugin = require("pouchdb-debug");
 const replicationPlugin = require("pouchdb-replication");
 const httpAdapter = require("pouchdb-adapter-http");
 const memoryAdapter = require("pouchdb-adapter-memory");
 
 PouchDB
+  .plugin(debugPlugin)
   .plugin(httpAdapter)
   .plugin(memoryAdapter)
   .plugin(replicationPlugin);
 
+PouchDB.debug.enable("*");
 const remote = new PouchDB("http://localhost:5984/test");
 const local = new PouchDB("test");
 
