@@ -1,11 +1,9 @@
 const PouchDB = require("pouchdb-core");
-const debugPlugin = require("pouchdb-debug");
 const replicationPlugin = require("pouchdb-replication");
 const httpAdapter = require("pouchdb-adapter-http");
 const memoryAdapter = require("pouchdb-adapter-memory");
 
 PouchDB
-  .plugin(debugPlugin)
   .plugin(httpAdapter)
   .plugin(memoryAdapter)
   .plugin(replicationPlugin);
